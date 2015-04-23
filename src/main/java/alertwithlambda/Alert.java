@@ -2,7 +2,9 @@ package alertwithlambda;
 
 import alertwithstrategypattern.Remind;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -12,15 +14,19 @@ import java.util.function.Predicate;
 public class Alert {
     private final DateRange dateRange;
     private final Predicate<LocalDateTime> predicate;
+    private final LocalTime alertTime;
 
-    public Alert(DateRange dateRange, Predicate<LocalDateTime> predicate) {
+    public Alert(DateRange dateRange, Predicate<LocalDateTime> predicate, LocalTime alertTime) {
         this.dateRange = dateRange;
         this.predicate = predicate;
+        this.alertTime = alertTime;
     }
+
 
     public boolean shouldAlert(LocalDateTime time) {
         return dateRange.isBetween(time) &&
-                predicate.test(time);
+                predicate.test(time) &&
+                alertTime.equals(time.toLocalTime());
     }
 
 }
