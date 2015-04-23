@@ -19,7 +19,7 @@ public class AlertTest {
     public void setUp() throws Exception {
         dateRange = new DateRange(LocalDateTime.MIN, LocalDateTime.MAX);
         alert = new Alert(dateRange,
-                (x)-> true,
+                (settedDate, today)-> settedDate.plusDays(2).equals(today),
                 LocalTime.of(14, 22, 22));
     }
 
@@ -27,7 +27,7 @@ public class AlertTest {
     public void testShouldAlert() throws Exception {
         LocalDateTime testTime = LocalDateTime.of(1994, 05, 28, 14, 22, 22);
         assertTrue(testTime.toLocalTime().equals(LocalTime.of(14, 22, 22)));
-        assertTrue(alert.shouldAlert(LocalDateTime.of(1994, 05, 28, 14, 22, 22)));
+        assertTrue(alert.shouldAlert(testTime));
         assertFalse(alert.shouldAlert(LocalDateTime.now()));
     }
 }
