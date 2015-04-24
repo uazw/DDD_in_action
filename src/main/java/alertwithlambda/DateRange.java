@@ -1,20 +1,22 @@
 package alertwithlambda;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
  * Created by yang on 2015/4/23.
  */
 public final class DateRange {
-    private final LocalDateTime startTime;
-    private final LocalDateTime endTime;
+    private final LocalDate startDate;
+    private final LocalDate endDate;
 
-    public DateRange(LocalDateTime startTime, LocalDateTime endTime) {
-        this.startTime = startTime;
-        this.endTime = endTime;
+    public DateRange(LocalDate startDate, LocalDate endDate) {
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
+
     public boolean isBetween(LocalDateTime time) {
-        return time.isAfter(startTime) && time.isBefore(endTime);
+        return time.toLocalDate().isAfter(startDate) && time.toLocalDate().isBefore(endDatec);
     }
 }
