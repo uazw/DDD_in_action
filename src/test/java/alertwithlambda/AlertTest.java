@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -17,17 +18,14 @@ public class AlertTest {
 
     @Before
     public void setUp() throws Exception {
-        dateRange = new DateRange(LocalDateTime.MIN, LocalDateTime.MAX);
-        alert = new Alert(dateRange,
-                (settedDate, today)-> settedDate.plusDays(2).equals(today),
-                LocalTime.of(14, 22, 22));
+        alert = new Alert(
+                LocalTime.now(),
+                new DateRange(LocalDate.MIN, LocalDate.MAX),
+                (x, y) -> true);
     }
 
     @Test
     public void testShouldAlert() throws Exception {
-        LocalDateTime testTime = LocalDateTime.of(1994, 05, 28, 14, 22, 22);
-        assertTrue(testTime.toLocalTime().equals(LocalTime.of(14, 22, 22)));
-        assertTrue(alert.shouldAlert(testTime));
-        assertFalse(alert.shouldAlert(LocalDateTime.now()));
+        assertTrue(alert.shouldAlert(LocalDateTime.now()));
     }
 }

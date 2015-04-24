@@ -3,6 +3,7 @@ package alertwithlambda;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static org.junit.Assert.*;
@@ -16,8 +17,8 @@ public class DateRangeTest {
     @Before
     public void setUp() throws Exception {
         dateRange = new DateRange(
-                LocalDateTime.MIN,
-                LocalDateTime.MAX);
+                LocalDate.MIN,
+                LocalDate.MAX);
     }
 
     @Test
