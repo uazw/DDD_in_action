@@ -10,18 +10,18 @@ import static org.junit.Assert.*;
 /**
  * Created by yang on 2015/4/24.
  */
-public class AlertTest {
+public class DaysReminderTest {
 
     @Test
-    public void testShouldAlert() throws Exception {
+    public void testShouldRemind() throws Exception {
         LocalTime rightNow = LocalTime.now();
 
         Alert alert = new Alert(
                 rightNow,
                 new DateRange(LocalDate.MIN, LocalDate.MAX),
-                new DefaultReminder());
+                new DaysReminder(new DefaultReminder(), 1));
 
-        assertTrue(alert.shouldAlert(rightNow.atDate(LocalDate.now())));
+        assertTrue(alert.shouldAlert(rightNow.atDate(LocalDate.now()).plusDays(1)));
     }
 
 }

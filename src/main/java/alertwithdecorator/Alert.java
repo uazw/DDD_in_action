@@ -1,5 +1,6 @@
 package alertwithdecorator;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -23,7 +24,7 @@ public class Alert {
 
     public boolean shouldAlert(LocalDateTime time) {
         return dateRange.isBetween(time) &&
-                reminder.shouldRemind(time) &&
+                reminder.shouldRemind(alertTime.atDate(LocalDate.now()), time) &&
                 alertTime.equals(time.toLocalTime());
     }
 

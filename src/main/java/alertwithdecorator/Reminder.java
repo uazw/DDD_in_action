@@ -7,5 +7,5 @@ import java.time.LocalDateTime;
  */
 
 public interface Reminder {
-    boolean shouldRemind(LocalDateTime localDateTime);
+    boolean shouldRemind(LocalDateTime sitedTime, LocalDateTime today);
 }
