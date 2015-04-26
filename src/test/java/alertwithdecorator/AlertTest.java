@@ -1,5 +1,6 @@
 package alertwithdecorator;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import static org.junit.Assert.*;
  */
 public class AlertTest {
 
+
     @Test
     public void testShouldAlert() throws Exception {
         LocalTime rightNow = LocalTime.now();
@@ -23,5 +25,4 @@ public class AlertTest {
 
         assertTrue(alert.shouldAlert(rightNow.atDate(LocalDate.now())));
     }
-
 }
