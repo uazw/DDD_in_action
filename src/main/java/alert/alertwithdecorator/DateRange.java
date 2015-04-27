@@ -1,4 +1,4 @@
-package alertwithdecorator;
+package alert.alertwithdecorator;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

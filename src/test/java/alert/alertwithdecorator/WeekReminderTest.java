@@ -1,7 +1,8 @@
-package alertwithdecorator;
+package alert.alertwithdecorator;
 
 import org.junit.Test;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -10,18 +11,21 @@ import static org.junit.Assert.*;
 /**
  * Created by yang on 2015/4/24.
  */
-public class DaysReminderTest {
+public class WeekReminderTest {
 
     @Test
     public void testShouldRemind() throws Exception {
+        WeekReminder weekReminder =
+                new WeekReminder(new DefaultReminder(), DayOfWeek.FRIDAY, DayOfWeek.MONDAY);
+
         LocalTime rightNow = LocalTime.now();
 
         Alert alert = new Alert(
                 rightNow,
                 new DateRange(LocalDate.MIN, LocalDate.MAX),
-                new DaysReminder(new DefaultReminder(), 1));
+                weekReminder);
 
-        assertTrue(alert.shouldAlert(rightNow.atDate(LocalDate.now()).plusDays(1)));
+        assertTrue(alert.shouldAlert(rightNow.atDate(LocalDate.now())));
+
     }
-
 }

@@ -1,4 +1,4 @@
-package alertwithlambda;
+package alert.alertwithlambda;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -17,6 +17,9 @@ public final class DateRange {
 
 
     public boolean isBetween(LocalDateTime time) {
-        return time.toLocalDate().isAfter(startDate) && time.toLocalDate().isBefore(endDate);
+        return time.toLocalDate().isAfter(startDate) &&
+                time.toLocalDate().isBefore(endDate) ||
+                time.toLocalDate().equals(startDate) ||
+                time.toLocalDate().equals(endDate);
     }
 }

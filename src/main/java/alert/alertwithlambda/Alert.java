@@ -1,32 +1,32 @@
-package alertwithdecorator;
+package alert.alertwithlambda;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.function.BiPredicate;
 
 /**
  * Created by yang on 2015/3/21.
  */
 public class Alert {
     private final DateRange dateRange;
-    private final Reminder reminder;
+    private final BiPredicate<LocalDateTime, LocalDateTime> predicate;
     private final LocalTime alertTime;
 
     public Alert(LocalTime alertTime,
                 DateRange dateRange,
-                Reminder reminder) {
+                BiPredicate<LocalDateTime, LocalDateTime> predicate) {
 
         this.dateRange = dateRange;
-        this.reminder = reminder;
+        this.predicate = predicate;
         this.alertTime = alertTime;
     }
 
 
     public boolean shouldAlert(LocalDateTime time) {
         return dateRange.isBetween(time) &&
-                reminder.shouldRemind(alertTime.atDate(LocalDate.now()), time) &&
+                predicate.test(alertTime.atDate(LocalDate.now()), time) &&
                 alertTime.equals(time.toLocalTime());
     }
-
 
 }

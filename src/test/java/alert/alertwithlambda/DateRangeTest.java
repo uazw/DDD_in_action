@@ -1,4 +1,4 @@
-package alertwithlambda;
+package alert.alertwithlambda;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,5 +24,13 @@ public class DateRangeTest {
     @Test
     public void testIsBetween() throws Exception {
         assertTrue(dateRange.isBetween(LocalDateTime.now()));
+
+        dateRange = new DateRange(
+                LocalDate.now(),
+                LocalDate.now()
+        );
+
+        assertTrue(dateRange.isBetween(LocalDateTime.now()));
+
     }
 }

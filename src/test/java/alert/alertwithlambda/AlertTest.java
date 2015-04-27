@@ -1,10 +1,9 @@
-package alertwithlambda;
+package alert.alertwithlambda;
 
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;

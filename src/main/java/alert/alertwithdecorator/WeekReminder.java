@@ -1,4 +1,4 @@
-package alertwithdecorator;
+package alert.alertwithdecorator;
 
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
